@@ -17,7 +17,8 @@ public class DistruttoreLivelli : MonoBehaviour
     {
         if(transform.position.x < puntoDistruzione.transform.position.x)
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

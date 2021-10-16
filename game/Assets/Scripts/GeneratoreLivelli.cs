@@ -12,6 +12,7 @@ public class GeneratoreLivelli : MonoBehaviour
     private float platformWidth;
     public float distanzaMin;
     public float distanzaMax;
+    public ObjectPooler objectPool;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,11 @@ public class GeneratoreLivelli : MonoBehaviour
         {
             distanza = Random.Range(distanzaMin, distanzaMax);
             transform.position = new Vector2(transform.position.x + platformWidth + distanza, transform.position.y);
-            Instantiate(platform, transform.position, transform.rotation);
+            // Instantiate(platform, transform.position, transform.rotation);
+            GameObject platform = objectPool.GetPooled();
+            platform.transform.position = transform.position;
+            platform.transform.rotation = transform.rotation;
+            platform.SetActive(true);
         }
     }
 }
