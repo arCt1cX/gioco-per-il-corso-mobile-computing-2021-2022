@@ -1,45 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Jump : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private LayerMask layerMask;    
     private BoxCollider2D bc;
-    private Animator myAnimator;
     private GameObject player;
 
-    // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
-        myAnimator = GetComponent<Animator>();
-        player = GameObject.Find("coso rosso con sopracciglia");
+       // myAnimator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isTerreno())
+        if (Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject() && isTerreno())
         {
-            float velocitaSalto = 7f;
-            rb.velocity = Vector2.up * velocitaSalto;
+            if (Input.GetTouch(0).position.x < Screen.width/2)
+            {
+                float velocitaSalto = 7f;
+                rb.velocity = Vector2.up * velocitaSalto;
+            }
         }
         movimento();
-        myAnimator.SetBool("terreno", isTerreno());
-        myAnimator.SetBool("rotola", isRotolando());
     }
 
-
-    private bool isRotolando()
-    {
-        Vector3 eulerRotation = transform.rotation.eulerAngles;
-        if ((eulerRotation.z <= 150 && eulerRotation.z >= -150) || !isTerreno())
-            return false;
-        return true;
-    }
 
     private bool isTerreno()
         {

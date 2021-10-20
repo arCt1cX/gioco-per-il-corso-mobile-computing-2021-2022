@@ -12,7 +12,7 @@ public class Camera : MonoBehaviour
     void Start()
     {
         mainCamera = GetComponent<Camera>();
-        player = GameObject.Find("coso rosso con sopracciglia");
+        player = GameObject.Find("player");
     }
 
     // Update is called once per frame

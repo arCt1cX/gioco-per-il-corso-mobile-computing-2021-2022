@@ -22,7 +22,7 @@ public class Betterjump : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (caduta - 1) * Time.deltaTime;
         }
-        else if (rb.velocity.y > 0 && !Input.GetMouseButton(0)) {
+        else if (rb.velocity.y > 0 && !(Input.touchCount > 0)) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMult - 1) * Time.deltaTime;
         }
     }
