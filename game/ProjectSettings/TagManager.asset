@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - parry
+  - distruttore
   layers:
   - Default
   - TransparentFX

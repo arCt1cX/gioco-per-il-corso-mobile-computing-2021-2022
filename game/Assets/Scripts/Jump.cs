@@ -5,23 +5,34 @@ using UnityEngine.EventSystems;
 
 public class Jump : MonoBehaviour
 {
+    public float moveSpeed;
+    private float moveSpeedStore;
+    public float speedMultiplier;
+    public float speedIncreaseMilestone;
+    private float speedIncreaseMilestoneStore;
+    private float speedMilestoneCount;
+    private float speedMilestoneCountStore;
     private Rigidbody2D rb;
     [SerializeField] private LayerMask layerMask;    
     private BoxCollider2D bc;
-    private GameObject player;
+    public GameManager theGameManager;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
-       // myAnimator = GetComponent<Animator>();
-        
+        speedMilestoneCount = speedIncreaseMilestone;
+        moveSpeedStore = moveSpeed;
+        speedMilestoneCountStore = speedMilestoneCount;
+        speedIncreaseMilestoneStore = speedIncreaseMilestone;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject() && isTerreno())
+        
+        if (Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject() && isTerreno() && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             if (Input.GetTouch(0).position.x < Screen.width/2)
             {
@@ -30,6 +41,16 @@ public class Jump : MonoBehaviour
             }
         }
         movimento();
+        if (transform.position.x > speedMilestoneCount)
+        {
+            if (moveSpeed < 12)
+            {
+                speedMilestoneCount += speedIncreaseMilestone;
+                speedIncreaseMilestone = speedIncreaseMilestone * speedMultiplier;
+                moveSpeed = moveSpeed * speedMultiplier;
+            }
+        }
+        
     }
 
 
@@ -41,7 +62,20 @@ public class Jump : MonoBehaviour
         }
 
     private  void movimento()
+        {
+        
+        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        }
+
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        rb.velocity = new Vector2(4f, rb.velocity.y);
+        if(collision.gameObject.tag == "distruttore")
+        {
+            theGameManager.RestartGame();
+            moveSpeed = moveSpeedStore;
+            speedMilestoneCount = speedMilestoneCountStore;
+            speedIncreaseMilestone = speedIncreaseMilestoneStore;
+        }
     }
-    }
+}

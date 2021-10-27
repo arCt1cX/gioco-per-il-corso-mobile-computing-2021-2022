@@ -6,6 +6,7 @@ public class Distruttore : MonoBehaviour
 {
 
     public GameObject obj;
+    public Jump player;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class Distruttore : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Destroy(obj, 3.5f);
+                Destroy(obj, 3.5f);
         }
     }
 }

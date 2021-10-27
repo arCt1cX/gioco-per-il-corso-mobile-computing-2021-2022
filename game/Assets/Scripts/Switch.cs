@@ -22,7 +22,7 @@ public class Switch : MonoBehaviour
 
     public void SwitchAvatar()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             if (Input.GetTouch(0).position.x > Screen.width/2)
             {
