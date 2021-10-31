@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private Vector2 endPosition;
     public GameObject endposition;
     private ScoreManager scoreManager;
+    public DeathMenu deathMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -20,36 +21,33 @@ public class GameManager : MonoBehaviour
         scoreManager = FindObjectOfType<ScoreManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void RestartGame()
-    {
-        StartCoroutine("RestartGameCo");
-    }
-
-    public IEnumerator RestartGameCo()
     {
         scoreManager.scoreIncrease = false;
         player.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+       // System.Threading.Thread.Sleep(1000);
+        deathMenu.gameObject.SetActive(true);
+    }
+
+    public void Reset()
+    {
+        deathMenu.gameObject.SetActive(false);
         for (int i = 0; i < generatore.getPooled().Count; i++)
         {
             if (generatore.getPooled()[i] == null)
             {
                 i++;
             }
-            
-            else {
+
+            else
+            {
                 generatore.getPooled()[i].gameObject.SetActive(false);
-                if(!generatore.getPooled()[i].gameObject.activeInHierarchy)
+                if (!generatore.getPooled()[i].gameObject.activeInHierarchy)
                 {
                     Destroy(generatore.getPooled()[i].gameObject);
                 }
-                if (i>0) {
+                if (i > 0)
+                {
                     if (generatore.getPooled()[i - 1] == null && generatore.getPooled()[i + 1] == null)
                     {
                         Destroy(generatore.getPooled()[i].gameObject);

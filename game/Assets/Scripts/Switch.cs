@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Switch : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Switch : MonoBehaviour
 
     public void SwitchAvatar()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject())
         {
             if (Input.GetTouch(0).position.x > Screen.width/2)
             {
