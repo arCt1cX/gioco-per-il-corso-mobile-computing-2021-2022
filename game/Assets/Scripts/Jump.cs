@@ -32,7 +32,7 @@ public class Jump : MonoBehaviour
     void Update()
     {
         
-        if (Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject() && isTerreno() && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject() && isTerreno())
         {
             if (Input.GetTouch(0).position.x < Screen.width/2)
             {

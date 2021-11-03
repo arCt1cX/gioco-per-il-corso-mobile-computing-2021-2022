@@ -1069,6 +1069,8 @@ MonoBehaviour:
   levelPartList:
   - {fileID: 5936720991240795286, guid: cd58cff4e29222f49bac7757b68bb5f6, type: 3}
   - {fileID: 8169186149029272006, guid: c15f817394e8bc94db805df27f86c0c3, type: 3}
+  - {fileID: 4676558928144042787, guid: 75557f12d73eeb9439d64da9928b8dca, type: 3}
+  - {fileID: 1590628427183086805, guid: 476db2dedc5c52941b8090e7f7f82388, type: 3}
   player: {fileID: 248148044}
   pooled: []
   gameManager: {fileID: 1422301601}
@@ -2939,6 +2941,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 848376589}
     m_Modifications:
+    - target: {fileID: 2719076345057621155, guid: cd58cff4e29222f49bac7757b68bb5f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.874
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719076345057621155, guid: cd58cff4e29222f49bac7757b68bb5f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.354
+      objectReference: {fileID: 0}
     - target: {fileID: 5936720991240795286, guid: cd58cff4e29222f49bac7757b68bb5f6, type: 3}
       propertyPath: m_RootOrder
       value: 2

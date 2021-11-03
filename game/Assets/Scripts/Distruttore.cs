@@ -25,7 +25,7 @@ public class Distruttore : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-                Destroy(obj, 3.5f);
+                Destroy(obj, 11f);
         }
     }
 }
