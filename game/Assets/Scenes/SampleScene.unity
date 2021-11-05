@@ -410,7 +410,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -99
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 7cd83ae91c3e39c4aabf1a4ec5235e1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -558,6 +558,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   theGameManager: {fileID: 1422301601}
+  rosso: {fileID: 268413008}
+  verde: {fileID: 1745338108}
 --- !u!61 &248148047
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1071,6 +1073,8 @@ MonoBehaviour:
   - {fileID: 8169186149029272006, guid: c15f817394e8bc94db805df27f86c0c3, type: 3}
   - {fileID: 4676558928144042787, guid: 75557f12d73eeb9439d64da9928b8dca, type: 3}
   - {fileID: 1590628427183086805, guid: 476db2dedc5c52941b8090e7f7f82388, type: 3}
+  - {fileID: 1122497110588465126, guid: a5834f8b65503904187e4ce86142a281, type: 3}
+  - {fileID: 6216665687555101641, guid: 80006f4fa0f7fc64586dd6d5011ab5a0, type: 3}
   player: {fileID: 248148044}
   pooled: []
   gameManager: {fileID: 1422301601}
@@ -1082,7 +1086,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390220109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.486969, y: 0.17342916, z: -1.6947548}
+  m_LocalPosition: {x: 21.68, y: -1.91, z: -1.6947548}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

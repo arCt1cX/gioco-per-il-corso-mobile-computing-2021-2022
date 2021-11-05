@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2466685219970320311}
   m_Layer: 6
   m_Name: piattaforma rossa
-  m_TagString: Untagged
+  m_TagString: rosso
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

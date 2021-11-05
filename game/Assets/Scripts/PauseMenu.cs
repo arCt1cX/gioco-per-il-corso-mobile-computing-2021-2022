@@ -22,9 +22,10 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
+        FindObjectOfType<GameManager>().Reset();
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
-        FindObjectOfType<GameManager>().Reset();
+        
     }
     public void QuitToMenu()
     {

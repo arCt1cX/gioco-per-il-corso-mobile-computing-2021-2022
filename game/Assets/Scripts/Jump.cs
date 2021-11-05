@@ -16,6 +16,8 @@ public class Jump : MonoBehaviour
     [SerializeField] private LayerMask layerMask;    
     private BoxCollider2D bc;
     public GameManager theGameManager;
+    public GameObject rosso;
+    public GameObject verde;
 
 
     void Start()
@@ -76,6 +78,30 @@ public class Jump : MonoBehaviour
             moveSpeed = moveSpeedStore;
             speedMilestoneCount = speedMilestoneCountStore;
             speedIncreaseMilestone = speedIncreaseMilestoneStore;
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "rosso")
+        {
+            if(!rosso.gameObject.activeInHierarchy)
+            {
+                theGameManager.RestartGame();
+                moveSpeed = moveSpeedStore;
+                speedMilestoneCount = speedMilestoneCountStore;
+                speedIncreaseMilestone = speedIncreaseMilestoneStore;
+            }
+        }
+        if(collision.gameObject.tag == "verde")
+        {
+            if(!verde.gameObject.activeInHierarchy)
+            {
+                theGameManager.RestartGame();
+                moveSpeed = moveSpeedStore;
+                speedMilestoneCount = speedMilestoneCountStore;
+                speedIncreaseMilestone = speedIncreaseMilestoneStore;
+            }
         }
     }
 }

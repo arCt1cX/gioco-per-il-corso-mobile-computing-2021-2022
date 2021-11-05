@@ -6,6 +6,8 @@ TagManager:
   tags:
   - parry
   - distruttore
+  - rosso
+  - verde
   layers:
   - Default
   - TransparentFX

@@ -31,30 +31,19 @@ public class GameManager : MonoBehaviour
 
     public void Reset()
     {
-        deathMenu.gameObject.SetActive(false);
-        for (int i = 0; i < generatore.getPooled().Count; i++)
+        if (!player.transform.Find("coso rosso con sopracciglia").gameObject.activeInHierarchy)
         {
-            if (generatore.getPooled()[i] == null)
-            {
-                i++;
-            }
+            player.transform.Find("coso rosso con sopracciglia").gameObject.SetActive(true);
+            player.transform.Find("coso verde con sopracciglia").gameObject.SetActive(false);
+        }
+        Vector3 eulerRotation = player.transform.eulerAngles;
+        eulerRotation.Set(0, 0, 0);
+        deathMenu.gameObject.SetActive(false);
+        foreach (var pooled in generatore.getPooled())
+        {
+            if (!pooled) continue;
 
-            else
-            {
-                generatore.getPooled()[i].gameObject.SetActive(false);
-                if (!generatore.getPooled()[i].gameObject.activeInHierarchy)
-                {
-                    Destroy(generatore.getPooled()[i].gameObject);
-                }
-                if (i > 0)
-                {
-                    if (generatore.getPooled()[i - 1] == null && generatore.getPooled()[i + 1] == null)
-                    {
-                        Destroy(generatore.getPooled()[i].gameObject);
-                    }
-                }
-
-            }
+            Destroy(pooled.gameObject);
         }
         player.transform.position = playerStartPoint;
         generatore.SetEndPosition(endPosition);
