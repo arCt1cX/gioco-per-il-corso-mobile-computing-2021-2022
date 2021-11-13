@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(playGameLevel);
+        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+
     }
 
     public void Update()

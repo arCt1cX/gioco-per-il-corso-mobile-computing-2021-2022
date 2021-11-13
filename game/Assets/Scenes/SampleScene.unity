@@ -364,7 +364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85565095}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.742, y: 4.49, z: 10}
+  m_LocalPosition: {x: 0.0044, y: 4.49, z: 10}
   m_LocalScale: {x: 1.8186, y: 2.0758998, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -416,7 +416,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 12.46483, y: 0.60559475}
+  m_Size: {x: 18.169533, y: 0.60559475}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -514,10 +514,9 @@ GameObject:
   - component: {fileID: 248148045}
   - component: {fileID: 248148048}
   - component: {fileID: 248148052}
-  - component: {fileID: 248148053}
-  - component: {fileID: 248148054}
   - component: {fileID: 248148055}
   - component: {fileID: 248148051}
+  - component: {fileID: 248148050}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -560,6 +559,10 @@ MonoBehaviour:
   theGameManager: {fileID: 1422301601}
   rosso: {fileID: 268413008}
   verde: {fileID: 1745338108}
+  esplosioneRosso: {fileID: 2981049921228344502, guid: 09aa17902f0a8934b9cbd23194affa04, type: 3}
+  esplosioneVerde: {fileID: 7889910639750899356, guid: 5e45ecb13b3eaf546b3c0381eee65366, type: 3}
+  scoppioRosso: {fileID: 100718476043765553, guid: b42ddf9f9cd250d45b1791ef688756f8, type: 3}
+  scoppioVerde: {fileID: 7561094586055596690, guid: a47d383a02ae3d24d9c414fe636cc0a2, type: 3}
 --- !u!61 &248148047
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -605,7 +608,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!4 &248148049
 Transform:
@@ -623,6 +626,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &248148050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248148044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b10b7d7bf3cd154a86c09bb96d4a884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosso: {fileID: 268413008}
+  verde: {fileID: 1745338108}
+  rossoSalto: {fileID: 21300000, guid: e02418bb7ae908c4699c4d3b6eebd7a9, type: 3}
+  verdeSalto: {fileID: 21300000, guid: 5678a07b31fe04845be89b7426989664, type: 3}
+  rossoRotola: {fileID: 21300000, guid: d7d55e98eb199624e8c5a3893b652a01, type: 3}
+  rossoCammina: {fileID: 21300000, guid: 45caefbc50ffc944a8c2b50d5edb952c, type: 3}
+  verdeCammina: {fileID: 21300000, guid: 488bdbe5f81c99e468932571ba19a470, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &248148051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,41 +714,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &248148053
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248148044}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c14d2a63202ca6145957ba2c496e616d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &248148054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248148044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a94174f8c9cc1de478b6be17e380299b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obj: {fileID: 248148051}
 --- !u!114 &248148055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,7 +804,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268413008}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 248148049}
@@ -1075,6 +1065,10 @@ MonoBehaviour:
   - {fileID: 1590628427183086805, guid: 476db2dedc5c52941b8090e7f7f82388, type: 3}
   - {fileID: 1122497110588465126, guid: a5834f8b65503904187e4ce86142a281, type: 3}
   - {fileID: 6216665687555101641, guid: 80006f4fa0f7fc64586dd6d5011ab5a0, type: 3}
+  - {fileID: 3834587238043555709, guid: acad42605d9fe1741b820135a469fc20, type: 3}
+  - {fileID: 3342057652602516198, guid: 82b3c8afd87d2ef40a83945acb7a4197, type: 3}
+  - {fileID: 6971423781137415298, guid: 5d9589aba926f5f4abf07943f5498f80, type: 3}
+  - {fileID: 6093267296960715953, guid: 508fbec2d179de54489e6b38c6103fed, type: 3}
   player: {fileID: 248148044}
   pooled: []
   gameManager: {fileID: 1422301601}
@@ -1348,7 +1342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719727206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7297, y: -0.7406, z: 10}
+  m_LocalPosition: {x: -0.15, y: 0.57, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -1400,7 +1394,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 22.619354, y: 13.901155}
+  m_Size: {x: 33.12789, y: 13.901155}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1796,7 +1790,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 17, y: 596}
   m_SizeDelta: {x: -948, y: -424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1131739434
@@ -1894,7 +1888,7 @@ Transform:
   m_GameObject: {fileID: 1161083637}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.505251, y: -0.8338505, z: 26.154709}
-  m_LocalScale: {x: 0.3065, y: 0.3233, z: 1}
+  m_LocalScale: {x: 0.3065, y: 0.3065, z: 1}
   m_Children: []
   m_Father: {fileID: 848376589}
   m_RootOrder: 0
@@ -2296,6 +2290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2c24df78895524cb86572537c3294a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  giocatore: {fileID: 248148051}
   player: {fileID: 248148044}
   generatore: {fileID: 390220110}
   endposition: {fileID: 354544164}
@@ -3004,6 +2999,10 @@ PrefabInstance:
     - target: {fileID: 8145810982962783078, guid: cd58cff4e29222f49bac7757b68bb5f6, type: 3}
       propertyPath: m_Name
       value: pavimento normale
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145810982962783078, guid: cd58cff4e29222f49bac7757b68bb5f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7334617640460103135, guid: cd58cff4e29222f49bac7757b68bb5f6, type: 3}

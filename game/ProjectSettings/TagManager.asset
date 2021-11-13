@@ -8,6 +8,8 @@ TagManager:
   - distruttore
   - rosso
   - verde
+  - inizio
+  - spikes
   layers:
   - Default
   - TransparentFX

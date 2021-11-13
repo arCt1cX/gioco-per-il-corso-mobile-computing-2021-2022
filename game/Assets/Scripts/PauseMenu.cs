@@ -16,8 +16,9 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
     }
 
     public void RestartGame()
@@ -25,12 +26,15 @@ public class PauseMenu : MonoBehaviour
         FindObjectOfType<GameManager>().Reset();
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
-        
+        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+
     }
     public void QuitToMenu()
     {
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         SceneManager.LoadScene(mainMenuLevel);
+        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+
     }
 }

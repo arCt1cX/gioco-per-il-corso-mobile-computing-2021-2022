@@ -17,7 +17,7 @@ public class Distruttore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+ 
     }
 
 
@@ -25,7 +25,10 @@ public class Distruttore : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-                Destroy(obj, 11f);
+            if(transform.position.x < collision.transform.position.x)
+            {
+                Destroy(obj, 5f);
+            }
         }
     }
 }

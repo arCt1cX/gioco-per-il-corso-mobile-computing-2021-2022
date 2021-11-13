@@ -10,9 +10,13 @@ public class DeathMenu : MonoBehaviour
     public void RestartGame()
     {
         FindObjectOfType<GameManager>().Reset();
+        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+
     }
     public void QuitToMenu()
     {
         SceneManager.LoadScene(mainMenuLevel);
+        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+
     }
 }
