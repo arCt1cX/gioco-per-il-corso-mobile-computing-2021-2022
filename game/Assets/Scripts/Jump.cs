@@ -23,21 +23,24 @@ public class Jump : MonoBehaviour
     public ParticleSystem esplosioneVerde;
     public ParticleSystem scoppioRosso;
     public ParticleSystem scoppioVerde;
-
+    private float timeStore;
+    public float qwerrty;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         speedMilestoneCount = speedIncreaseMilestone;
-        moveSpeedStore = moveSpeed;
+        timeStore = Time.timeScale;
         speedMilestoneCountStore = speedMilestoneCount;
         speedIncreaseMilestoneStore = speedIncreaseMilestone;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        qwerrty = Time.timeScale;
         if (Time.timeScale > 0f) {
             foreach (Touch touch in Input.touches)
             {
@@ -52,11 +55,11 @@ public class Jump : MonoBehaviour
         movimento();
         if (transform.position.x > speedMilestoneCount)
         {
-            if (moveSpeed < 12)
+            if (Time.timeScale <= 2)
             {
                 speedMilestoneCount += speedIncreaseMilestone;
                 speedIncreaseMilestone = speedIncreaseMilestone * speedMultiplier;
-                moveSpeed = moveSpeed * speedMultiplier;
+                Time.timeScale = Time.timeScale + 0.1f;
             }
         }
     }
@@ -71,7 +74,7 @@ public class Jump : MonoBehaviour
 
     private void movimento()
     {
-        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(4f, rb.velocity.y);
     }
 
 
@@ -80,7 +83,7 @@ public class Jump : MonoBehaviour
         if (collision.gameObject.tag == "distruttore")
         {
             theGameManager.RestartGame();
-            moveSpeed = moveSpeedStore;
+            Time.timeScale = timeStore;
             speedMilestoneCount = speedMilestoneCountStore;
             speedIncreaseMilestone = speedIncreaseMilestoneStore;
         }
@@ -93,6 +96,8 @@ public class Jump : MonoBehaviour
             rb.gameObject.SetActive(false);
             ParticleSystem exRossa = Instantiate(esplosioneRosso, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
             exRossa.Play();
+            if (SfxManager.sfxInstance.musicToggle == true)
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.splat);
         }
 
         if (verde.gameObject.activeInHierarchy)
@@ -100,6 +105,8 @@ public class Jump : MonoBehaviour
             rb.gameObject.SetActive(false);
             ParticleSystem exVerde = Instantiate(esplosioneVerde, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
             exVerde.Play();
+            if (SfxManager.sfxInstance.musicToggle == true)
+                SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.splat);
         }
     }
     
@@ -108,6 +115,8 @@ public class Jump : MonoBehaviour
             rb.gameObject.SetActive(false);
             ParticleSystem scoppio = Instantiate(scoppioRosso, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
             scoppio.Play();
+        if (SfxManager.sfxInstance.musicToggle == true)
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.boomSplat);
     }
 
     private void BreakForVerde()
@@ -115,6 +124,8 @@ public class Jump : MonoBehaviour
             rb.gameObject.SetActive(false);
             ParticleSystem scoppio = Instantiate(scoppioVerde, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
             scoppio.Play();
+        if (SfxManager.sfxInstance.musicToggle == true)
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.boomSplat);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -125,7 +136,7 @@ public class Jump : MonoBehaviour
             BreakForSpikes();
             FindObjectOfType<ScoreManager>().scoreIncrease = false;
             theGameManager.Invoke("RestartGame", 1.5f);
-            moveSpeed = moveSpeedStore;
+            Time.timeScale = timeStore;
             speedMilestoneCount = speedMilestoneCountStore;
             speedIncreaseMilestone = speedIncreaseMilestoneStore;
         }
@@ -137,7 +148,7 @@ public class Jump : MonoBehaviour
                 BreakForVerde();
                 FindObjectOfType<ScoreManager>().scoreIncrease = false;
                 theGameManager.Invoke("RestartGame", 1.5f);
-                moveSpeed = moveSpeedStore;
+                Time.timeScale = timeStore;
                 speedMilestoneCount = speedMilestoneCountStore;
                 speedIncreaseMilestone = speedIncreaseMilestoneStore;
             }
@@ -150,7 +161,7 @@ public class Jump : MonoBehaviour
                 BreakForRosso();
                 FindObjectOfType<ScoreManager>().scoreIncrease = false;
                 theGameManager.Invoke("RestartGame", 1.5f);
-                moveSpeed = moveSpeedStore;
+                Time.timeScale = timeStore;
                 speedMilestoneCount = speedMilestoneCountStore;
                 speedIncreaseMilestone = speedIncreaseMilestoneStore;
             }

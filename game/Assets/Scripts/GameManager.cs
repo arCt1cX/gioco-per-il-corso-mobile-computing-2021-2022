@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
         }
         player.gameObject.SetActive(false);
         deathMenu.gameObject.SetActive(true);
+        if (BackgroundMusic.backgroundMusic.soundToggle == true)
+            BackgroundMusic.backgroundMusic.Audio.Stop();
     }
 
     public void Reset()
@@ -57,6 +59,8 @@ public class GameManager : MonoBehaviour
         this.generatore.getPooled().Clear();
         player.transform.position = playerStartPoint;
         generatore.SetEndPosition(endPosition);
+        if (BackgroundMusic.backgroundMusic.soundToggle == true)
+            BackgroundMusic.backgroundMusic.Audio.Play();
         player.gameObject.SetActive(true);
         scoreManager.scoreCounter = 0;
         scoreManager.scoreIncrease = true;

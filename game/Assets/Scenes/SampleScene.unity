@@ -552,7 +552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   speedMultiplier: 1.1
-  speedIncreaseMilestone: 100
+  speedIncreaseMilestone: 60
   layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -563,6 +563,7 @@ MonoBehaviour:
   esplosioneVerde: {fileID: 7889910639750899356, guid: 5e45ecb13b3eaf546b3c0381eee65366, type: 3}
   scoppioRosso: {fileID: 100718476043765553, guid: b42ddf9f9cd250d45b1791ef688756f8, type: 3}
   scoppioVerde: {fileID: 7561094586055596690, guid: a47d383a02ae3d24d9c414fe636cc0a2, type: 3}
+  qwerrty: 0
 --- !u!61 &248148047
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1558,6 +1559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3d6074591be6649b657d9ea2940e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMenu: {fileID: 8300000, guid: 0087f372fc8974a4f92680b25d57d080, type: 3}
   mainMenuLevel: Main menu
 --- !u!1 &986000410
 GameObject:
@@ -2778,6 +2780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuLevel: Main menu
   pauseMenu: {fileID: 1772163632}
+  audioMenu: {fileID: 8300000, guid: 5a63bff3f4350684faed869176ba9c61, type: 3}
 --- !u!1 &2105239676
 GameObject:
   m_ObjectHideFlags: 0

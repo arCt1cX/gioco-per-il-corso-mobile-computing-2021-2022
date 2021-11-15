@@ -8,17 +8,26 @@ public class PauseMenu : MonoBehaviour
 
     public string mainMenuLevel;
     public GameObject pauseMenu;
+    public AudioClip audioMenu;
+    private float currentTime;
+
     public void PauseGame()
     {
+        currentTime = Time.timeScale;
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        if (BackgroundMusic.backgroundMusic.soundToggle == true)
+            BackgroundMusic.backgroundMusic.Audio.Pause();
     }
 
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+        if (BackgroundMusic.backgroundMusic.soundToggle == true)
+            BackgroundMusic.backgroundMusic.Audio.UnPause();
+        Time.timeScale = currentTime;
+        if (SfxManager.sfxInstance.musicToggle == true)
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
     }
 
     public void RestartGame()
@@ -26,7 +35,8 @@ public class PauseMenu : MonoBehaviour
         FindObjectOfType<GameManager>().Reset();
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
-        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+        if (SfxManager.sfxInstance.musicToggle == true)
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
 
     }
     public void QuitToMenu()
@@ -34,7 +44,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         SceneManager.LoadScene(mainMenuLevel);
-        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+        if (BackgroundMusic.backgroundMusic.soundToggle == true)
+            BackgroundMusic.backgroundMusic.ChangeBackgroundMusic(audioMenu);
+        if (SfxManager.sfxInstance.musicToggle == true)
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
 
     }
 }

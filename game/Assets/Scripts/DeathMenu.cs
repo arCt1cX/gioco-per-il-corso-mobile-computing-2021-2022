@@ -5,18 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class DeathMenu : MonoBehaviour
 {
-
+    public AudioClip audioMenu;
     public string mainMenuLevel;
     public void RestartGame()
     {
         FindObjectOfType<GameManager>().Reset();
-        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+        if(SfxManager.sfxInstance.musicToggle == true)
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
 
     }
     public void QuitToMenu()
     {
         SceneManager.LoadScene(mainMenuLevel);
-        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+        if (BackgroundMusic.backgroundMusic.soundToggle == true)
+            BackgroundMusic.backgroundMusic.ChangeBackgroundMusic(audioMenu);
+        if(SfxManager.sfxInstance.musicToggle == true)
+            SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
 
     }
 }
