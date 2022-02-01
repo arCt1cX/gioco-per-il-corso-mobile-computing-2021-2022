@@ -13,7 +13,8 @@ public class SfxManager : MonoBehaviour
 
 
     private void Awake()
-    {if(sfxInstance != null && sfxInstance != this)
+    {
+        if(sfxInstance != null && sfxInstance != this)
         {
             Destroy(this.gameObject);
             return;

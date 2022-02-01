@@ -556,6 +556,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  layerMaskRuler:
+    serializedVersion: 2
+    m_Bits: 128
   theGameManager: {fileID: 1422301601}
   rosso: {fileID: 268413008}
   verde: {fileID: 1745338108}
@@ -563,7 +566,6 @@ MonoBehaviour:
   esplosioneVerde: {fileID: 7889910639750899356, guid: 5e45ecb13b3eaf546b3c0381eee65366, type: 3}
   scoppioRosso: {fileID: 100718476043765553, guid: b42ddf9f9cd250d45b1791ef688756f8, type: 3}
   scoppioVerde: {fileID: 7561094586055596690, guid: a47d383a02ae3d24d9c414fe636cc0a2, type: 3}
-  qwerrty: 0
 --- !u!61 &248148047
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -606,7 +608,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a0e9aa34e396ee6419f0f442882aff2b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -663,6 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rosso: {fileID: 268413008}
   verde: {fileID: 1745338108}
+  colorChange: {fileID: 4468801389313604944, guid: 974d0033c0064a24e9de4615fa4a428c, type: 3}
 --- !u!212 &248148052
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -728,6 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 248148048}
+  parryEffect: {fileID: 3111990094885717051, guid: 34cf596e632954a42a2974a0a5c7b6cf, type: 3}
 --- !u!1 &268413008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1074,8 @@ MonoBehaviour:
   - {fileID: 3342057652602516198, guid: 82b3c8afd87d2ef40a83945acb7a4197, type: 3}
   - {fileID: 6971423781137415298, guid: 5d9589aba926f5f4abf07943f5498f80, type: 3}
   - {fileID: 6093267296960715953, guid: 508fbec2d179de54489e6b38c6103fed, type: 3}
+  - {fileID: 1235442198385880863, guid: 47f99b059735eb84ca6981a58913336b, type: 3}
+  - {fileID: 4320633729834461912, guid: 71743e224ccb4e8489d32027b306bc1b, type: 3}
   player: {fileID: 248148044}
   pooled: []
   gameManager: {fileID: 1422301601}

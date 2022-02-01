@@ -33,7 +33,9 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(false);
         deathMenu.gameObject.SetActive(true);
         if (BackgroundMusic.backgroundMusic.soundToggle == true)
+        {
             BackgroundMusic.backgroundMusic.Audio.Stop();
+        }
     }
 
     public void Reset()

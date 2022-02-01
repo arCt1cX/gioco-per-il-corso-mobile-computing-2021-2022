@@ -16,11 +16,11 @@ public class DeathMenu : MonoBehaviour
     }
     public void QuitToMenu()
     {
-        SceneManager.LoadScene(mainMenuLevel);
         if (BackgroundMusic.backgroundMusic.soundToggle == true)
             BackgroundMusic.backgroundMusic.ChangeBackgroundMusic(audioMenu);
         if(SfxManager.sfxInstance.musicToggle == true)
             SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.click);
+        SceneManager.LoadScene(mainMenuLevel);
 
     }
 }

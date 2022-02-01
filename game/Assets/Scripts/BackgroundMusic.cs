@@ -15,15 +15,13 @@ public class BackgroundMusic : MonoBehaviour
 
     private void Awake()
     {
-        if(backgroundMusic == null)
+        if(backgroundMusic != null && backgroundMusic != this)
         {
+            Destroy(this.gameObject);
+            return;
+        }
             backgroundMusic = this;
-            DontDestroyOnLoad(backgroundMusic);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+            DontDestroyOnLoad(this);
     }
 
     public void ChangeBackgroundMusic(AudioClip music)

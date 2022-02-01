@@ -14,6 +14,26 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        if (!PlayerPrefs.HasKey("soundtoggle"))
+        {
+            PlayerPrefs.SetInt("soundtoggle", 1);
+            LoadBg();
+        }
+        else
+        {
+            LoadBg();
+        }
+
+        if(!PlayerPrefs.HasKey("musictoggle"))
+        {
+            PlayerPrefs.SetInt("musictoggle", 1);
+            LoadSfx();
+        }
+        else
+        {
+            LoadSfx();
+        }
+
         if (BackgroundMusic.backgroundMusic.Audio.isPlaying)
         {
             soundOn.gameObject.SetActive(true);
@@ -56,6 +76,7 @@ public class SoundManager : MonoBehaviour
             sfxOn.gameObject.SetActive(true);
             sfxOff.gameObject.SetActive(false);
         }
+        SaveSfx();
     }
 
     public void MusicToggle()
@@ -77,6 +98,25 @@ public class SoundManager : MonoBehaviour
             soundOn.gameObject.SetActive(true);
             soundOff.gameObject.SetActive(false);
         }
+        SaveBg();
+    }
+    private void LoadBg()
+    {
+       BackgroundMusic.backgroundMusic.soundToggle = PlayerPrefs.GetInt("soundtoggle") == 1;
     }
 
+    private void LoadSfx()
+    {
+        SfxManager.sfxInstance.musicToggle = PlayerPrefs.GetInt("musictoggle") == 1;
+    }
+
+    private void SaveBg()
+    {
+        PlayerPrefs.SetInt("soundtoggle", BackgroundMusic.backgroundMusic.soundToggle ? 1 : 0);
+    }
+
+    private void SaveSfx()
+    {
+        PlayerPrefs.SetInt("musictoggle", SfxManager.sfxInstance.musicToggle ? 1 : 0);
+    }
 }

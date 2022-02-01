@@ -15,6 +15,7 @@ public class Jump : MonoBehaviour
     private float speedMilestoneCountStore;
     private Rigidbody2D rb;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask layerMaskRuler;
     private BoxCollider2D bc;
     public GameManager theGameManager;
     public GameObject rosso;
@@ -24,7 +25,6 @@ public class Jump : MonoBehaviour
     public ParticleSystem scoppioRosso;
     public ParticleSystem scoppioVerde;
     private float timeStore;
-    public float qwerrty;
 
     void Start()
     {
@@ -40,14 +40,19 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        qwerrty = Time.timeScale;
         if (Time.timeScale > 0f) {
             foreach (Touch touch in Input.touches)
             {
-                if (touch.position.x < Screen.width / 2 && !EventSystem.current.IsPointerOverGameObject(touch.fingerId) && isTerreno() /* && touch.phase == TouchPhase.Began*/)
+                if (touch.position.x < Screen.width / 2 && !EventSystem.current.IsPointerOverGameObject(touch.fingerId) && isTerreno() && touch.phase == TouchPhase.Began)
                 {
                     float velocitaSalto = 7f;
-                    rb.velocity = Vector2.up * velocitaSalto;
+                    rb.velocity = Vector2.up * velocitaSalto;   
+                }
+
+                if(touch.position.x < Screen.width / 2 && isRuler() && !isTerreno())
+                {
+                    rb.velocity = Vector2.up * 3;
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, new Vector2(transform.localPosition.x + 5f, transform.localPosition.y), Time.deltaTime * 10f);
                 }
             }
         }
@@ -67,7 +72,14 @@ public class Jump : MonoBehaviour
 
     private bool isTerreno()
     {
-        RaycastHit2D raycastHit2d = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, layerMask);
+        RaycastHit2D raycastHit2d = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .3f, layerMask);
+        Debug.Log(raycastHit2d.collider);
+        return (raycastHit2d.collider != null);
+    }
+
+    private bool isRuler()
+    {
+        RaycastHit2D raycastHit2d = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.up, .2f, layerMaskRuler);
         Debug.Log(raycastHit2d.collider);
         return (raycastHit2d.collider != null);
     }

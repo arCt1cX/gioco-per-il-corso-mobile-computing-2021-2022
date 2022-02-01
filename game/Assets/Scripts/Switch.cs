@@ -8,7 +8,7 @@ public class Switch : MonoBehaviour
     public GameObject rosso;
     public GameObject verde;
     int attivo = 1;
-
+    public ParticleSystem colorChange;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,27 +23,7 @@ public class Switch : MonoBehaviour
     public void SwitchAvatar()
     {
         if(Time.timeScale > 0f)
-        { /*
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject() && Input.GetTouch(0).position.x > Screen.width / 2)
-            {
-                if (Input.GetTouch(0).position.x > Screen.width / 2)
-                {
-                    switch (attivo)
-                    {
-                        case 1:
-                            attivo = 2;
-                            rosso.gameObject.SetActive(false);
-                            verde.gameObject.SetActive(true);
-                            break;
-
-                        case 2:
-                            attivo = 1;
-                            verde.gameObject.SetActive(false);
-                            rosso.gameObject.SetActive(true);
-                            break;
-                    }
-                }
-            }*/
+        { 
             foreach(Touch touch in Input.touches)
             {
                 if(touch.position.x > Screen.width / 2 && touch.phase == TouchPhase.Began && !IsPointerOverUIObject())
@@ -52,12 +32,16 @@ public class Switch : MonoBehaviour
                     {
                         case 1:
                             attivo = 2;
+                            ParticleSystem change = Instantiate(colorChange, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
+                            change.Play();
                             rosso.gameObject.SetActive(false);
                             verde.gameObject.SetActive(true);
                             break;
 
                         case 2:
                             attivo = 1;
+                            ParticleSystem change2 = Instantiate(colorChange, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
+                            change2.Play();
                             verde.gameObject.SetActive(false);
                             rosso.gameObject.SetActive(true);
                             break;
